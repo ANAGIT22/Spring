@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.met.metcamp.web</groupId>
-	<artifactId>demo-springboot</artifactId>
+	<artifactId>Spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo-springboot</name>
 	<description>Demo project for Spring Boot</description>
@@ -44,7 +44,12 @@
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
