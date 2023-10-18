@@ -1,11 +1,13 @@
-package com.demo.Spring.service;
+/*package com.demo.Spring.service;
 
 import com.demo.Spring.entities.model.Event;
-import com.demo.Spring.exceptions.ValidationException;
+import com.demo.Spring.exceptions.ApiException;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-public class ValidationService {
+@Service
+public class ValidationService {    
 
     public void validateCreateEvent(Event event) {
         validateId(event.getId());
@@ -18,32 +20,25 @@ public class ValidationService {
     }
 
     public void validateName (String name) {
-        if (name.isEmpty()) {
-            throw new ValidationException("name is required");
+        if (name == null || name.isEmpty()) {
+            throw new ApiException(400, "name is required");
         }
         if (name.length() < 5) {
-            throw new ValidationException("name is too short");
+            throw new ApiException(400, "name is too short");
         }
     }
 
     public void validateId(int id) {
         if(id == 0) {
-            throw new ValidationException("id must not be zero");
+            throw new ApiException(400, "id must not be zero");
         }  else if (id < 0) {
-            throw new ValidationException("id must be positive");
+            throw new ApiException(400, "id must be positive");
         }
     }
 
     public void validateDates(LocalDateTime startDate, LocalDateTime endDate) {
-        //Te animás a completar este método?
-    }
-
-    //Este método es un ejemplo, podes adaptarlo para que funcione
-    // igual que los otros y también tendrás que adaptar los tests
-    public boolean validateAttendees(int cantidad) {
-        if (cantidad > 0 && cantidad <= 50) {
-            return true;
+        if (startDate.isAfter(endDate)) {
+            throw new ApiException(400, "start date must be before end date");
         }
-        return false;
     }
-}
+} */

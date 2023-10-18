@@ -5,13 +5,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demo.Spring.entities.model.Event;
 import com.demo.Spring.exceptions.ConvertionException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class MapperUtils {
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public Event mapToEvent(String input) {
+    /* es un método que asigna una cadena JSON a un objeto de evento
+    mediante un ObjectMapper. Si hay algún error durante la conversión, arroja una ConversionException.
+     */
+    public  static Event mapToEvent(String input) {
         try {
             return MAPPER.readValue(input, Event.class);
         } catch (JsonProcessingException e) {
@@ -19,7 +24,7 @@ public class MapperUtils {
         }
     }
 
-    public ArrayList<Event> mapToEventList(String input) {
+    public static ArrayList<Event> mapToEventList(String input) {
         try {
             TypeReference<ArrayList<Event>> typeRef = new TypeReference<>() {
             };
@@ -37,7 +42,7 @@ public class MapperUtils {
         }
     }
 
-    public String mapToJson(ArrayList<Event> eventList) {
+    public  static String mapToJson(ArrayList<Event> eventList) {
         try {
             return MAPPER.writeValueAsString(eventList);
         } catch (JsonProcessingException e) {

@@ -10,5 +10,4 @@ public class Price {
     private TicketType type;
     private Currency currency;
     private double value;
-
 }
